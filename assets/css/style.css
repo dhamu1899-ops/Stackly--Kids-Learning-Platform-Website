@@ -1,0 +1,211 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Quicksand:wght@400;500;600;700&family=Bubblegum+Sans&display=swap');
+
+:root {
+  --font-fredoka: 'Fredoka', cursive, sans-serif;
+  --font-quicksand: 'Quicksand', sans-serif;
+  --font-bubblegum: 'Bubblegum Sans', cursive;
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  width: 100%;
+  font-family: var(--font-quicksand);
+  background-color: #fdfbf7;
+  color: #1e293b;
+}
+
+.font-fredoka {
+  font-family: var(--font-fredoka);
+}
+
+.font-quicksand {
+  font-family: var(--font-quicksand);
+}
+
+.font-bubblegum {
+  font-family: var(--font-bubblegum);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff8f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #f97316;
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #ea580c;
+}
+
+/* Wavy background helper */
+.bg-cloud-pattern {
+  background-image: radial-gradient(#fdba74 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
+}
+
+/* Custom animations for Kids Preschool */
+@keyframes float {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(4deg); }
+}
+
+@keyframes float-reverse {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(12px) rotate(-4deg); }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(-6deg); }
+  50% { transform: rotate(6deg); }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-bounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+}
+
+@keyframes bubble-rise {
+  0% { transform: translateY(0) scale(0.8); opacity: 0.7; }
+  50% { opacity: 0.9; }
+  100% { transform: translateY(-120px) scale(1.2); opacity: 0; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: float-reverse 5s ease-in-out infinite;
+}
+
+.animate-float-slow {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-wiggle {
+  animation: wiggle 2.5s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: spin-slow 18s linear infinite;
+}
+
+.animate-pulse-bounce {
+  animation: pulse-bounce 3s ease-in-out infinite;
+}
+
+.animate-bubble {
+  animation: bubble-rise 4s ease-in-out infinite;
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 22s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+/* KIDS SCROLL REVEAL ANIMATIONS (IntersectionObserver Effects) */
+.reveal-on-scroll {
+  opacity: 0;
+  transform: translateY(35px);
+  transition: opacity 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.7s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  will-change: opacity, transform;
+}
+
+.reveal-visible {
+  opacity: 1 !important;
+  transform: translateY(0) scale(1) rotate(0deg) !important;
+}
+
+.reveal-scale-pop {
+  opacity: 0;
+  transform: scale(0.82) translateY(20px);
+  transition: opacity 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275), transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.reveal-rotate-in {
+  opacity: 0;
+  transform: rotate(-4deg) translateY(30px) scale(0.95);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+.reveal-slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Click Burst Bubble styling */
+.click-bubble {
+  position: fixed;
+  pointer-events: none;
+  border-radius: 50%;
+  z-index: 99999;
+  animation: bubblePop 0.8s ease-out forwards;
+}
+
+@keyframes bubblePop {
+  0% {
+    transform: translate(-50%, -50%) scale(0.3);
+    opacity: 0.9;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.8) translateY(-30px);
+    opacity: 0;
+  }
+}
+
+/* Modal and Drawer Backdrop & Slide */
+.modal-backdrop {
+  backdrop-filter: blur(4px);
+  background-color: rgba(15, 23, 42, 0.6);
+  transition: opacity 0.3s ease;
+}
+
+/* Toast alert animation */
+.toast-enter {
+  animation: toastIn 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+@keyframes toastIn {
+  0% {
+    transform: translateY(100%) scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}

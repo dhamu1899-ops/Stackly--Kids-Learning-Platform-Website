@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register Account - Stackly Salem Preschool & Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-gradient-to-b from-[#FFFDF9] via-[#FFF5EA] to-[#FFEFE0] text-slate-800 font-quicksand flex flex-col min-h-screen items-center justify-center p-4 sm:p-6 select-none overflow-x-hidden relative">
+
+  <!-- Floating Background Decorative Shapes -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-10 left-10 w-20 h-24 bg-rose-400/30 rounded-full blur-xs flex items-center justify-center border-2 border-rose-300 animate-float">❤️</div>
+    <div class="absolute top-16 right-12 w-16 h-16 bg-amber-400/30 rounded-3xl flex items-center justify-center border-2 border-amber-300 animate-spin-slow">⭐</div>
+    <div class="absolute bottom-16 left-12 w-16 h-16 bg-sky-400/30 rounded-2xl flex items-center justify-center border-2 border-sky-300 animate-float-reverse">🚀</div>
+    <div class="absolute bottom-20 right-16 w-20 h-20 bg-emerald-400/30 rounded-full flex items-center justify-center border-2 border-emerald-300 animate-pulse-bounce">🎨</div>
+  </div>
+
+  <!-- Return To Home Top Button -->
+  <div class="absolute top-6 left-6 z-30">
+    <button onclick="window.navigateTo('index.html', 'Home')" class="flex items-center gap-2 bg-white/90 backdrop-blur-md hover:bg-white text-slate-800 font-fredoka font-bold text-xs px-4 py-2 rounded-full shadow-md border border-amber-200 transition-all hover:scale-105 cursor-pointer">
+      <i data-lucide="arrow-left" class="w-4 h-4 text-orange-500"></i>
+      <span>← RETURN TO HOME</span>
+    </button>
+  </div>
+
+  <!-- CENTERED SIGNUP CARD -->
+  <main class="w-full max-w-md my-auto relative z-10">
+    <div class="bg-white/95 backdrop-blur-md w-full rounded-3xl shadow-2xl overflow-hidden border-4 border-amber-200">
+      <!-- Centered Logo & Company Header -->
+      <div class="p-6 text-white text-center bg-gradient-to-r from-orange-500 to-amber-500 flex flex-col items-center justify-center space-y-2">
+        <a href="index.html" class="header-logo-container inline-block"></a>
+        <div>
+          <h3 class="font-fredoka text-2xl font-bold">Create Student Account</h3>
+          <p class="text-white/90 text-xs mt-1 font-quicksand">Join Stackly Salem Academy for interactive Montessori &amp; STEM learning</p>
+        </div>
+      </div>
+
+      <!-- Registration Form -->
+      <form onsubmit="handleSignupSubmit(event)" class="p-6 space-y-3.5">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full Student Name *</label>
+          <div class="relative">
+            <i data-lucide="user" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="text" placeholder="Enter student full name" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Parent Email Address *</label>
+          <div class="relative">
+            <i data-lucide="mail" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input type="email" placeholder="Enter parent email address" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Password *</label>
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input id="signup-pass" type="password" placeholder="Create password" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-10 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Confirm Password *</label>
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input id="signup-confirm-pass" type="password" placeholder="Confirm password" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-10 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+          </div>
+        </div>
+
+        <button type="submit" class="w-full text-white font-fredoka font-bold py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer mt-2 bg-orange-500 hover:bg-orange-600 shadow-orange-200">
+          <span>REGISTER STACKLY ACCOUNT</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+
+        <div class="text-center pt-2 border-t border-slate-100">
+          <a href="login.html" class="text-xs font-bold text-slate-500 hover:text-orange-600 transition-colors">
+            Already registered? Sign In
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    function handleSignupSubmit(e) {
+      e.preventDefault();
+      const p1 = document.getElementById('signup-pass').value;
+      const p2 = document.getElementById('signup-confirm-pass').value;
+      if (p1 !== p2) {
+        if (window.sounds) window.sounds.playPop();
+        alert('Passwords do not match! Please verify your password.');
+        return;
+      }
+      if (window.sounds) window.sounds.playChime();
+      window.navigateTo('dashboard.html', 'Student Dashboard');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+  </script>
+</body>
+</html>

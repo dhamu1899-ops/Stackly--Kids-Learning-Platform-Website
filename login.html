@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal Sign In - Stackly Salem Preschool & Academy</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-gradient-to-b from-[#FFFDF9] via-[#FFF5EA] to-[#FFEFE0] text-slate-800 font-quicksand flex flex-col min-h-screen items-center justify-center p-4 sm:p-6 select-none overflow-x-hidden relative">
+
+  <!-- Floating Background Decorative Shapes -->
+  <div class="absolute inset-0 pointer-events-none overflow-hidden">
+    <div class="absolute top-10 left-10 w-20 h-24 bg-rose-400/30 rounded-full blur-xs flex items-center justify-center border-2 border-rose-300 animate-float">❤️</div>
+    <div class="absolute top-16 right-12 w-16 h-16 bg-amber-400/30 rounded-3xl flex items-center justify-center border-2 border-amber-300 animate-spin-slow">⭐</div>
+    <div class="absolute bottom-16 left-12 w-16 h-16 bg-sky-400/30 rounded-2xl flex items-center justify-center border-2 border-sky-300 animate-float-reverse">🚀</div>
+    <div class="absolute bottom-20 right-16 w-20 h-20 bg-emerald-400/30 rounded-full flex items-center justify-center border-2 border-emerald-300 animate-pulse-bounce">🎨</div>
+  </div>
+
+  <!-- Return To Home Top Button -->
+  <div class="absolute top-6 left-6 z-30">
+    <button onclick="window.navigateTo('index.html', 'Home')" class="flex items-center gap-2 bg-white/90 backdrop-blur-md hover:bg-white text-slate-800 font-fredoka font-bold text-xs px-4 py-2 rounded-full shadow-md border border-amber-200 transition-all hover:scale-105 cursor-pointer">
+      <i data-lucide="arrow-left" class="w-4 h-4 text-orange-500"></i>
+      <span>← RETURN TO HOME</span>
+    </button>
+  </div>
+
+  <!-- CENTERED LOGIN CARD -->
+  <main class="w-full max-w-md my-auto relative z-10">
+    <div class="bg-white/95 backdrop-blur-md w-full rounded-3xl shadow-2xl overflow-hidden border-4 border-amber-200">
+      <!-- Role Gradient Header (Centered Logo & Company Name) -->
+      <div id="login-header-banner" class="p-6 text-white text-center bg-gradient-to-r from-orange-500 to-amber-500 transition-colors duration-300 flex flex-col items-center justify-center space-y-2">
+        <a href="index.html" class="header-logo-container inline-block"></a>
+        <div>
+          <h3 class="font-fredoka text-2xl font-bold">Stackly Role-Based Portal</h3>
+          <p class="text-white/90 text-xs mt-1 font-quicksand">Select your role to access customized dashboards &amp; features for Stackly Salem Academy</p>
+        </div>
+      </div>
+
+      <!-- Role Selection Tabs -->
+      <div class="grid grid-cols-3 p-2 bg-slate-100 border-b border-slate-200 text-xs font-bold font-fredoka">
+        <button type="button" onclick="selectLoginRole('student')" id="role-btn-student" class="py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 bg-orange-500 text-white shadow-md">
+          <span class="text-base">🎓</span>
+          <span>Student / Parent</span>
+        </button>
+        <button type="button" onclick="selectLoginRole('teacher')" id="role-btn-teacher" class="py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 text-slate-600 hover:bg-slate-200">
+          <span class="text-base">👩‍🏫</span>
+          <span>Teacher</span>
+        </button>
+        <button type="button" onclick="selectLoginRole('admin')" id="role-btn-admin" class="py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 text-slate-600 hover:bg-slate-200">
+          <span class="text-base">⚡</span>
+          <span>Admin</span>
+        </button>
+      </div>
+
+      <!-- Login Form -->
+      <form onsubmit="handleLoginSubmit(event)" class="p-6 space-y-4">
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Email Address</label>
+          <div class="relative">
+            <i data-lucide="mail" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input id="login-email" type="email" placeholder="Enter your email address" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+          </div>
+        </div>
+
+        <div>
+          <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Password</label>
+          <div class="relative">
+            <i data-lucide="lock" class="w-4 h-4 text-slate-400 absolute left-3.5 top-3.5"></i>
+            <input id="login-pass" type="password" placeholder="Enter your password" required class="w-full bg-slate-50 text-slate-800 text-sm pl-10 pr-10 py-3 rounded-2xl border border-slate-200 focus:outline-none focus:border-orange-500 font-quicksand" />
+            <button type="button" onclick="togglePassVisibility('login-pass', this)" class="absolute right-3 top-3 text-slate-400 hover:text-slate-600 cursor-pointer">
+              <i data-lucide="eye" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+
+        <button id="login-submit-btn" type="submit" class="w-full text-white font-fredoka font-bold py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer mt-2 bg-orange-500 hover:bg-orange-600 shadow-orange-200">
+          <span id="login-btn-text">SIGN IN AS STUDENT</span>
+          <i data-lucide="arrow-right" class="w-4 h-4"></i>
+        </button>
+
+        <div class="text-center pt-2 border-t border-slate-100">
+          <a href="signup.html" class="text-xs font-bold text-slate-500 hover:text-orange-600 transition-colors">
+            New to Stackly Salem? Register Account
+          </a>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script>
+    let currentRole = 'student';
+
+    function selectLoginRole(role) {
+      if (window.sounds) window.sounds.playPop();
+      currentRole = role;
+
+      const banner = document.getElementById('login-header-banner');
+      const submitBtn = document.getElementById('login-submit-btn');
+      const btnText = document.getElementById('login-btn-text');
+
+      const btnStudent = document.getElementById('role-btn-student');
+      const btnTeacher = document.getElementById('role-btn-teacher');
+      const btnAdmin = document.getElementById('role-btn-admin');
+
+      const tabs = [btnStudent, btnTeacher, btnAdmin];
+      tabs.forEach(t => t.className = 'py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 text-slate-600 hover:bg-slate-200');
+
+      if (role === 'admin') {
+        btnAdmin.className = 'py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 bg-purple-700 text-white shadow-md';
+        banner.className = 'p-6 relative text-white bg-gradient-to-r from-purple-700 to-indigo-800 transition-colors duration-300';
+        submitBtn.className = 'w-full text-white font-fredoka font-bold py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer mt-2 bg-purple-700 hover:bg-purple-800 shadow-purple-200';
+        btnText.textContent = 'SIGN IN AS ADMIN';
+      } else if (role === 'teacher') {
+        btnTeacher.className = 'py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 bg-sky-600 text-white shadow-md';
+        banner.className = 'p-6 relative text-white bg-gradient-to-r from-sky-600 to-indigo-600 transition-colors duration-300';
+        submitBtn.className = 'w-full text-white font-fredoka font-bold py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer mt-2 bg-sky-600 hover:bg-sky-700 shadow-sky-200';
+        btnText.textContent = 'SIGN IN AS TEACHER';
+      } else {
+        btnStudent.className = 'py-2.5 rounded-xl transition-all cursor-pointer flex flex-col items-center gap-1 bg-orange-500 text-white shadow-md';
+        banner.className = 'p-6 relative text-white bg-gradient-to-r from-orange-500 to-amber-500 transition-colors duration-300';
+        submitBtn.className = 'w-full text-white font-fredoka font-bold py-3.5 rounded-2xl shadow-lg flex items-center justify-center gap-2 transition-colors cursor-pointer mt-2 bg-orange-500 hover:bg-orange-600 shadow-orange-200';
+        btnText.textContent = 'SIGN IN AS STUDENT / PARENT';
+      }
+    }
+
+    function togglePassVisibility(inputId, btn) {
+      if (window.sounds) window.sounds.playPop();
+      const input = document.getElementById(inputId);
+      if (input.type === 'password') {
+        input.type = 'text';
+        btn.innerHTML = '<i data-lucide="eye-off" class="w-4 h-4"></i>';
+      } else {
+        input.type = 'password';
+        btn.innerHTML = '<i data-lucide="eye" class="w-4 h-4"></i>';
+      }
+      if (window.lucide) lucide.createIcons();
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      if (window.sounds) window.sounds.playChime();
+      const email = document.getElementById('login-email').value.trim();
+      localStorage.setItem('stackly_logged_in', 'true');
+      localStorage.setItem('stackly_user_role', currentRole);
+      if (email) localStorage.setItem('stackly_user_email', email);
+      window.navigateTo('dashboard.html', `${currentRole.toUpperCase()} Dashboard`);
+    }
+
+    document.addEventListener('DOMContentLoaded', () => { if (window.lucide) lucide.createIcons(); });
+  </script>
+</body>
+</html>

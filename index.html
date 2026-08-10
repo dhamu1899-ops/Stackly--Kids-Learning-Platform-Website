@@ -1,0 +1,819 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Stackly Salem Kids Preschool & Academy - Playful Early Education</title>
+  <meta name="description" content="Inspiring young minds through active play, creative art, music ensembles, and certified Montessori STEM learning environments in Salem." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-[#fdfbf7] text-slate-800 font-quicksand flex flex-col selection:bg-orange-200 selection:text-orange-900 min-h-screen">
+
+  <!-- TOP BAR WITH SALEM COMPANY ADDRESS & SOUND TOGGLE -->
+  <div class="hidden sm:block bg-[#182232] text-slate-200 text-xs py-2 px-4 sm:px-6 md:px-8 border-b border-slate-700/50">
+    <div class="max-w-7xl mx-auto flex flex-row justify-between items-center gap-2 sm:gap-4">
+      <div class="flex items-center gap-3 md:gap-5 shrink min-w-0">
+        <div class="flex items-center gap-1.5 hover:text-amber-400 transition-colors shrink min-w-0">
+          <i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-400 shrink-0"></i>
+          <span class="hidden lg:inline truncate">Stackly Company: 12/A Meyyanur Main Rd, Fairlands, Salem, TN 636004</span>
+          <span class="lg:hidden truncate max-w-[150px] md:max-w-[240px]">12/A Fairlands, Salem, TN</span>
+        </div>
+        <div class="flex items-center gap-1.5 hover:text-amber-400 transition-colors shrink-0">
+          <i data-lucide="phone" class="w-3.5 h-3.5 text-orange-400 shrink-0"></i>
+          <span class="font-semibold">+91 98765 43210</span>
+        </div>
+        <div class="hidden xl:flex items-center gap-1.5 hover:text-amber-400 transition-colors shrink-0">
+          <i data-lucide="mail" class="w-3.5 h-3.5 text-orange-400 shrink-0"></i>
+          <span>admissions.salem@stackly.com</span>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2 sm:gap-3.5 shrink-0">
+        <button id="sound-toggle-btn" onclick="window.toggleSoundFX()" class="flex items-center gap-1.5 bg-amber-400/20 text-amber-300 px-2.5 py-1 rounded-full font-fredoka text-[11px] font-bold hover:bg-amber-400 hover:text-slate-900 transition-all cursor-pointer shrink-0">
+          <i data-lucide="volume-2" class="w-3 h-3 text-amber-400"></i>
+          <span id="sound-toggle-text">Sound FX: ON</span>
+        </button>
+
+        <span class="hidden 2xl:inline-block text-slate-400 text-[11px] shrink-0">
+          ✨ Stackly Salem Academy
+        </span>
+        <div class="top-bar-social-container flex items-center gap-1.5 shrink-0"><div class="flex items-center gap-1.5 shrink-0">
+  <a href="404.html" title="Visit Stackly Kids on Facebook" class="w-7 h-7 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer border border-white/20">
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on X (Twitter)" class="w-7 h-7 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer border border-slate-700">
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on Instagram" class="w-7 h-7 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer border border-white/20">
+    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on LinkedIn" class="w-7 h-7 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shadow-md hover:scale-110 transition-transform cursor-pointer border border-white/20">
+    <svg class="w-3.5 h-3.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+  </a>
+</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAIN NAVIGATION HEADER -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-md border-b border-amber-100">
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 py-3 flex items-center justify-between">
+      <!-- Stackly SVG Logo -->
+      <a href="index.html" class="header-logo-container inline-block"></a>
+
+      <!-- Desktop Navigation Links -->
+      <nav class="hidden lg:flex items-center gap-1 xl:gap-2 font-fredoka text-base">
+        <a href="index.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-orange-600 bg-orange-100/80 shadow-xs">Home</a>
+        <a href="about.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">About Us</a>
+        <a href="courses.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">Courses</a>
+        <a href="teachers.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">Teachers</a>
+        <a href="events.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">Events</a>
+        <a href="blog.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">Blog</a>
+        <a href="contact.html" class="px-3.5 py-2 rounded-full font-semibold transition-all text-slate-700 hover:text-orange-600 hover:bg-slate-100">Contact Us</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-2 sm:gap-3">
+        <!-- Search Button -->
+        <button onclick="window.openSearchModal()" class="w-10 h-10 rounded-full bg-amber-50 hover:bg-orange-100 text-slate-700 hover:text-orange-600 flex items-center justify-center transition-colors cursor-pointer" title="Search">
+          <i data-lucide="search" class="w-5 h-5"></i>
+        </button>
+
+        <!-- Cart Button -->
+        <button onclick="window.openCartDrawer()" class="relative w-10 h-10 rounded-full bg-amber-50 hover:bg-orange-100 text-slate-700 hover:text-orange-600 flex items-center justify-center transition-colors cursor-pointer" title="Cart">
+          <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+          <span class="cart-badge-count absolute -top-1 -right-1 bg-rose-500 text-white font-fredoka text-[11px] font-bold w-5 h-5 rounded-full flex items-center justify-center shadow-xs" style="display:none">0</span>
+        </button>
+
+        <!-- Portal / Login Button -->
+        <button onclick="window.navigateTo('login.html', 'Login')" class="hidden sm:flex items-center gap-2 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-fredoka font-bold text-xs px-5 py-2.5 rounded-full shadow-md transition-all cursor-pointer">
+          <i data-lucide="user" class="w-4 h-4"></i>
+          <span>LOGIN</span>
+        </button>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobile-menu-toggle" class="lg:hidden w-10 h-10 rounded-xl bg-amber-50 text-slate-700 flex items-center justify-center text-xl cursor-pointer">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Nav -->
+    <div id="mobile-nav-drawer" class="hidden lg:hidden bg-white border-b border-amber-100 px-6 py-4 space-y-3 font-fredoka font-bold text-sm">
+      <a href="index.html" class="block text-orange-500">Home</a>
+      <a href="about.html" class="block text-slate-600 hover:text-orange-500">About Us</a>
+      <a href="courses.html" class="block text-slate-600 hover:text-orange-500">Courses &amp; Programs</a>
+      <a href="teachers.html" class="block text-slate-600 hover:text-orange-500">Teachers</a>
+      <a href="events.html" class="block text-slate-600 hover:text-orange-500">Events</a>
+      <a href="blog.html" class="block text-slate-600 hover:text-orange-500">Blog</a>
+      <a href="contact.html" class="block text-slate-600 hover:text-orange-500">Contact Us</a>
+      <a href="dashboard.html" class="block text-orange-600 border-t border-amber-100 pt-3">Role Portal Dashboard</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="flex-1">
+    <!-- SECTION 1: HERO SECTION -->
+    <section class="relative bg-gradient-to-b from-amber-50 via-orange-50/60 to-white pt-10 pb-20 overflow-hidden">
+      <!-- Floating Graphics -->
+      <div class="absolute top-10 left-8 text-amber-400 pointer-events-none hidden sm:block animate-float">
+        <i data-lucide="sparkles" class="w-12 h-12"></i>
+      </div>
+      <div class="absolute top-32 right-12 text-rose-400 pointer-events-none hidden sm:block animate-float-reverse">
+        <i data-lucide="heart" class="w-10 h-10 fill-current"></i>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          <!-- Left Column Text -->
+          <div class="space-y-6 text-center lg:text-left">
+            <div class="inline-flex items-center gap-2 bg-gradient-to-r from-orange-100 to-amber-100 text-orange-800 px-4 py-2 rounded-full font-fredoka font-bold text-xs tracking-wide shadow-xs border border-orange-200/60">
+              <i data-lucide="building" class="w-4 h-4 text-orange-500 animate-bounce"></i>
+              <span>WELCOME TO STACKLY SALEM PRESCHOOL & ACADEMY</span>
+            </div>
+
+            <h1 class="font-fredoka text-4xl sm:text-5xl xl:text-6xl font-bold text-slate-800 leading-tight">
+              Fantastic & Exciting <span class="text-orange-500 underline decoration-amber-400 decoration-wavy decoration-2">Surrounding</span> For Kids
+            </h1>
+
+            <p class="text-slate-600 font-quicksand text-base sm:text-lg leading-relaxed max-w-xl mx-auto lg:mx-0">
+              Inspiring young minds through active play, creative art, music ensembles, and certified Montessori STEM learning environments built for joyful discovery in Salem & online.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 pt-2">
+              <button onclick="window.navigateTo('about.html', 'About Us')" class="bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white font-fredoka font-bold text-base px-8 py-4 rounded-full shadow-lg shadow-orange-200 flex items-center gap-2 transition-all cursor-pointer">
+                <span>EXPLORE STACKLY SALEM</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+              </button>
+
+              <button onclick="window.navigateTo('courses.html', 'Courses')" class="bg-white hover:bg-slate-50 text-slate-800 font-fredoka font-bold text-base px-8 py-4 rounded-full border-2 border-amber-300 shadow-sm flex items-center gap-2 transition-all cursor-pointer">
+                <span>ENROLL NOW</span>
+              </button>
+            </div>
+
+            <!-- Quick Key Highlights Ticker -->
+            <div class="pt-6 grid grid-cols-3 gap-4 border-t border-orange-200/60 max-w-md mx-auto lg:mx-0">
+              <div class="bg-white/80 p-3 rounded-2xl border border-amber-100 shadow-xs text-center lg:text-left">
+                <span class="font-fredoka text-2xl font-bold text-slate-800 block">750K+</span>
+                <span class="text-xs text-slate-500 font-medium">Students</span>
+              </div>
+              <div class="bg-white/80 p-3 rounded-2xl border border-amber-100 shadow-xs text-center lg:text-left">
+                <span class="font-fredoka text-2xl font-bold text-slate-800 block">85+</span>
+                <span class="text-xs text-slate-500 font-medium font-quicksand">Global Awards</span>
+              </div>
+              <div class="bg-white/80 p-3 rounded-2xl border border-amber-100 shadow-xs text-center lg:text-left">
+                <span class="font-fredoka text-2xl font-bold text-slate-800 block">100%</span>
+                <span class="text-xs text-slate-500 font-medium font-quicksand">Safe Record</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column Polaroid Kid Photo Collage -->
+          <div class="relative">
+            <div class="relative z-10 grid grid-cols-2 gap-4 max-w-lg mx-auto">
+              <div class="space-y-4">
+                <div class="rounded-3xl overflow-hidden border-4 border-white shadow-xl rotate-[-2deg] bg-amber-100 transition-all hover:scale-105 cursor-pointer">
+                  <img src="assets/images/hero-banner.webp" alt="Kid studying at Stackly Salem" class="w-full h-56 object-cover" />
+                </div>
+                <div class="bg-amber-400 p-6 rounded-3xl text-slate-900 font-fredoka shadow-lg rotate-[3deg] border-2 border-white cursor-pointer transition-all hover:scale-105">
+                  <i data-lucide="smile" class="w-8 h-8 mb-2 animate-bounce text-slate-900"></i>
+                  <h4 class="text-lg font-bold">100% Interactive</h4>
+                  <p class="text-xs text-slate-800 font-quicksand font-medium mt-1">Fun-filled daily hands-on STEM play!</p>
+                </div>
+              </div>
+
+              <div class="space-y-4 pt-6">
+                <div class="bg-rose-500 p-6 rounded-3xl text-white font-fredoka shadow-lg rotate-[2deg] border-2 border-white cursor-pointer transition-all hover:scale-105">
+                  <i data-lucide="award" class="w-8 h-8 mb-2 text-yellow-300 animate-pulse"></i>
+                  <h4 class="text-lg font-bold">Top Preschool</h4>
+                  <p class="text-xs text-rose-100 font-quicksand font-medium mt-1">Award-winning Salem curriculum.</p>
+                </div>
+                <div class="rounded-3xl overflow-hidden border-4 border-white shadow-xl rotate-[-1deg] bg-amber-100 transition-all hover:scale-105 cursor-pointer">
+                  <img src="assets/images/about-story.webp" alt="Kids playing with blocks" class="w-full h-56 object-cover" />
+                </div>
+              </div>
+            </div>
+
+            <!-- Decorative Glow Background -->
+            <div class="absolute inset-0 -z-10 bg-amber-300/30 rounded-full blur-3xl scale-95"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 2: CONTINUOUS MARQUEE TICKER BANNER -->
+    <div class="bg-amber-400 text-slate-900 py-3 overflow-hidden border-y-2 border-amber-500/40 text-sm font-fredoka font-bold select-none shadow-sm">
+      <div class="animate-marquee whitespace-nowrap flex items-center gap-10">
+        <span class="flex items-center gap-8">
+          <span>🧸 Stackly Toys</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🎨 Salem Art Studio</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🧩 Puzzle Games</span><span class="text-amber-800 font-normal">✦</span>
+          <span>📚 Bedtime Books</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🔬 STEM Robotics Kits</span><span class="text-amber-800 font-normal">✦</span>
+        </span>
+        <span class="flex items-center gap-8">
+          <span>🧸 Stackly Toys</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🎨 Salem Art Studio</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🧩 Puzzle Games</span><span class="text-amber-800 font-normal">✦</span>
+          <span>📚 Bedtime Books</span><span class="text-amber-800 font-normal">✦</span>
+          <span>🔬 STEM Robotics Kits</span><span class="text-amber-800 font-normal">✦</span>
+        </span>
+      </div>
+    </div>
+
+    <!-- SECTION 3: HIGHLIGHT BANNER -->
+    <section class="bg-gradient-to-r from-amber-400 via-yellow-400 to-orange-400 py-10 px-4 sm:px-8 text-slate-900 relative overflow-hidden shadow-inner">
+      <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6 relative z-10">
+        <div class="space-y-2 text-center md:text-left">
+          <span class="text-xs font-bold uppercase tracking-widest bg-slate-900 text-amber-300 px-3.5 py-1 rounded-full font-fredoka inline-block shadow-xs">
+            STACKLY INTEGRAL EDUCATION • SALEM
+          </span>
+          <h2 class="font-fredoka text-2xl sm:text-3xl font-bold leading-tight max-w-2xl">
+            Education Is An Integral Part Of Every Child's Life — Nurturing Creativity & Friendship.
+          </h2>
+        </div>
+
+        <button onclick="window.navigateTo('courses.html', 'Courses')" class="bg-slate-900 hover:bg-slate-800 text-white font-fredoka font-bold px-8 py-3.5 rounded-full shadow-lg transition-all hover:scale-105 cursor-pointer shrink-0">
+          VIEW OUR COURSES
+        </button>
+      </div>
+    </section>
+
+    <!-- SECTION 4: INTERACTIVE KIDS PLAY STUDIO -->
+    <section class="py-12 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="bg-gradient-to-br from-amber-50 via-orange-50 to-rose-50 rounded-3xl p-6 sm:p-8 border-4 border-amber-300 shadow-2xl space-y-6 relative overflow-hidden text-slate-800">
+        <!-- Header & Tabs -->
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 border-b border-amber-200/80 pb-4">
+          <div class="flex items-center gap-3">
+            <div class="w-12 h-12 bg-orange-500 text-white rounded-2xl flex items-center justify-center shadow-md animate-bounce">
+              <i data-lucide="sparkles" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <h3 class="font-fredoka text-2xl font-bold text-slate-800 flex items-center gap-2">
+                Stackly Kids Fun Zone <span class="text-xs bg-rose-500 text-white px-2.5 py-0.5 rounded-full uppercase">Interactive</span>
+              </h3>
+              <p class="text-slate-500 text-xs">Let your child draw, tap musical sounds, and explore letters!</p>
+            </div>
+          </div>
+
+          <!-- Tab Switchers -->
+          <div class="flex items-center gap-2 bg-white/80 backdrop-blur-md p-1.5 rounded-2xl border border-amber-200 shadow-inner" id="pad-tab-switcher">
+            <button onclick="switchPadTab('draw')" id="pad-btn-draw" class="pad-tab-btn px-4 py-2 rounded-xl font-fredoka font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer bg-orange-500 text-white shadow-md">
+              <i data-lucide="palette" class="w-4 h-4"></i> Art Doodle
+            </button>
+            <button onclick="switchPadTab('sounds')" id="pad-btn-sounds" class="pad-tab-btn px-4 py-2 rounded-xl font-fredoka font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer text-slate-600 hover:bg-orange-100">
+              <i data-lucide="volume-2" class="w-4 h-4"></i> Sound FX
+            </button>
+            <button onclick="switchPadTab('abc')" id="pad-btn-abc" class="pad-tab-btn px-4 py-2 rounded-xl font-fredoka font-bold text-xs flex items-center gap-1.5 transition-all cursor-pointer text-slate-600 hover:bg-orange-100">
+              <i data-lucide="star" class="w-4 h-4"></i> ABC &amp; 123
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 1: DOODLE CANVAS -->
+        <div id="pad-tab-draw-content" class="space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-3 bg-white p-3 rounded-2xl border border-amber-200 shadow-xs">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold font-fredoka text-slate-500">COLOR:</span>
+              <button data-color="#f97316" class="color-picker-btn w-7 h-7 rounded-full bg-orange-500 ring-4 ring-offset-2 ring-slate-800 cursor-pointer"></button>
+              <button data-color="#ef4444" class="color-picker-btn w-7 h-7 rounded-full bg-red-500 cursor-pointer"></button>
+              <button data-color="#ec4899" class="color-picker-btn w-7 h-7 rounded-full bg-pink-500 cursor-pointer"></button>
+              <button data-color="#8b5cf6" class="color-picker-btn w-7 h-7 rounded-full bg-purple-500 cursor-pointer"></button>
+              <button data-color="#3b82f6" class="color-picker-btn w-7 h-7 rounded-full bg-blue-500 cursor-pointer"></button>
+              <button data-color="#10b981" class="color-picker-btn w-7 h-7 rounded-full bg-emerald-500 cursor-pointer"></button>
+              <button data-color="#eab308" class="color-picker-btn w-7 h-7 rounded-full bg-yellow-500 cursor-pointer"></button>
+              <button data-color="#1e293b" class="color-picker-btn w-7 h-7 rounded-full bg-slate-800 cursor-pointer"></button>
+            </div>
+
+            <div class="flex items-center gap-3">
+              <span class="text-xs font-bold font-fredoka text-slate-500">BRUSH:</span>
+              <button data-size="3" class="brush-size-btn px-2.5 py-1 rounded-lg text-xs font-bold font-fredoka bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">3px</button>
+              <button data-size="6" class="brush-size-btn px-2.5 py-1 rounded-lg text-xs font-bold font-fredoka bg-orange-500 text-white shadow-xs cursor-pointer">6px</button>
+              <button data-size="12" class="brush-size-btn px-2.5 py-1 rounded-lg text-xs font-bold font-fredoka bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">12px</button>
+              <button data-size="18" class="brush-size-btn px-2.5 py-1 rounded-lg text-xs font-bold font-fredoka bg-slate-100 text-slate-700 hover:bg-slate-200 cursor-pointer">18px</button>
+
+              <button id="canvas-clear-btn" class="bg-rose-100 text-rose-700 hover:bg-rose-200 px-3 py-1.5 rounded-xl font-fredoka font-bold text-xs flex items-center gap-1 cursor-pointer transition-colors">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i> Clear
+              </button>
+            </div>
+          </div>
+
+          <div class="w-full border-2 border-dashed border-amber-300 rounded-2xl overflow-hidden bg-white relative">
+            <canvas id="kids-drawing-canvas" class="w-full h-72 cursor-crosshair touch-none"></canvas>
+          </div>
+        </div>
+
+        <!-- TAB 2: SOUND FX -->
+        <div id="pad-tab-sounds-content" class="hidden space-y-4">
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+            <button onclick="window.playPadSound('duck')" class="p-6 bg-amber-100 hover:bg-amber-200 border-2 border-amber-300 text-amber-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">🦆</span>
+              <span class="font-fredoka font-bold text-base block">Little Duck</span>
+              <span class="text-xs font-quicksand block opacity-80">Quack Quack!</span>
+            </button>
+            <button onclick="window.playPadSound('bird')" class="p-6 bg-sky-100 hover:bg-sky-200 border-2 border-sky-300 text-sky-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">🐦</span>
+              <span class="font-fredoka font-bold text-base block">Singing Bird</span>
+              <span class="text-xs font-quicksand block opacity-80">Chirp Chirp!</span>
+            </button>
+            <button onclick="window.playPadSound('chime')" class="p-6 bg-rose-100 hover:bg-rose-200 border-2 border-rose-300 text-rose-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">🐱</span>
+              <span class="font-fredoka font-bold text-base block">Playful Kitten</span>
+              <span class="text-xs font-quicksand block opacity-80">Meow Meow!</span>
+            </button>
+            <button onclick="window.playPadSound('whistle')" class="p-6 bg-orange-100 hover:bg-orange-200 border-2 border-orange-300 text-orange-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">🐶</span>
+              <span class="font-fredoka font-bold text-base block">Happy Puppy</span>
+              <span class="text-xs font-quicksand block opacity-80">Woof Woof!</span>
+            </button>
+            <button onclick="window.playPadSound('victory')" class="p-6 bg-yellow-100 hover:bg-yellow-200 border-2 border-yellow-300 text-yellow-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">⭐</span>
+              <span class="font-fredoka font-bold text-base block">Twinkle Star</span>
+              <span class="text-xs font-quicksand block opacity-80">Magic Chime!</span>
+            </button>
+            <button onclick="window.playPadSound('drum')" class="p-6 bg-purple-100 hover:bg-purple-200 border-2 border-purple-300 text-purple-900 rounded-3xl text-center space-y-2 cursor-pointer transition-all hover:scale-105 shadow-md">
+              <span class="text-5xl block animate-bounce">🎵</span>
+              <span class="font-fredoka font-bold text-base block">Music Note</span>
+              <span class="text-xs font-quicksand block opacity-80">Drum Beat!</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- TAB 3: ABC & 123 -->
+        <div id="pad-tab-abc-content" class="hidden space-y-4">
+          <div class="grid grid-cols-5 sm:grid-cols-10 gap-3">
+            <button onclick="window.handleAbcClick('A')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">A</button>
+            <button onclick="window.handleAbcClick('B')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">B</button>
+            <button onclick="window.handleAbcClick('C')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">C</button>
+            <button onclick="window.handleAbcClick('D')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">D</button>
+            <button onclick="window.handleAbcClick('E')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">E</button>
+            <button onclick="window.handleAbcClick('1')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">1</button>
+            <button onclick="window.handleAbcClick('2')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">2</button>
+            <button onclick="window.handleAbcClick('3')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">3</button>
+            <button onclick="window.handleAbcClick('4')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">4</button>
+            <button onclick="window.handleAbcClick('5')" class="abc-btn p-4 bg-white hover:bg-orange-500 hover:text-white border-2 border-amber-300 rounded-2xl text-center font-fredoka font-bold text-2xl text-slate-800 shadow-md cursor-pointer transition-all hover:scale-110">5</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 5: CATEGORY CARDS SECTION -->
+    <section class="py-12 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="text-center space-y-2 mb-10">
+        <span class="text-orange-500 font-fredoka font-bold text-sm tracking-widest uppercase">POPULAR CATEGORIES</span>
+        <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800">Explore Learning Domains</h2>
+      </div>
+
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div onclick="window.navigateTo('courses.html', 'Courses')" class="p-6 rounded-3xl border-2 bg-rose-50 border-rose-300 text-rose-700 text-center space-y-2 cursor-pointer transition-all shadow-xs hover:shadow-xl hover:-translate-y-2">
+          <div class="text-4xl mb-1 animate-bounce">💃</div>
+          <h3 class="font-fredoka font-bold text-lg">Dance</h3>
+          <p class="text-xs font-semibold opacity-80">1 Course</p>
+        </div>
+        <div onclick="window.navigateTo('courses.html', 'Courses')" class="p-6 rounded-3xl border-2 bg-amber-50 border-amber-300 text-amber-700 text-center space-y-2 cursor-pointer transition-all shadow-xs hover:shadow-xl hover:-translate-y-2">
+          <div class="text-4xl mb-1 animate-bounce">🧩</div>
+          <h3 class="font-fredoka font-bold text-lg">Indoor Play</h3>
+          <p class="text-xs font-semibold opacity-80">1 Course</p>
+        </div>
+        <div onclick="window.navigateTo('courses.html', 'Courses')" class="p-6 rounded-3xl border-2 bg-sky-50 border-sky-300 text-sky-700 text-center space-y-2 cursor-pointer transition-all shadow-xs hover:shadow-xl hover:-translate-y-2">
+          <div class="text-4xl mb-1 animate-bounce">🗣️</div>
+          <h3 class="font-fredoka font-bold text-lg">Language</h3>
+          <p class="text-xs font-semibold opacity-80">4 Courses</p>
+        </div>
+        <div onclick="window.navigateTo('courses.html', 'Courses')" class="p-6 rounded-3xl border-2 bg-purple-50 border-purple-300 text-purple-700 text-center space-y-2 cursor-pointer transition-all shadow-xs hover:shadow-xl hover:-translate-y-2">
+          <div class="text-4xl mb-1 animate-bounce">🎵</div>
+          <h3 class="font-fredoka font-bold text-lg">Music</h3>
+          <p class="text-xs font-semibold opacity-80">3 Courses</p>
+        </div>
+        <div onclick="window.navigateTo('courses.html', 'Courses')" class="p-6 rounded-3xl border-2 bg-emerald-50 border-emerald-300 text-emerald-700 text-center space-y-2 cursor-pointer transition-all shadow-xs hover:shadow-xl hover:-translate-y-2">
+          <div class="text-4xl mb-1 animate-bounce">⚽</div>
+          <h3 class="font-fredoka font-bold text-lg">Sports</h3>
+          <p class="text-xs font-semibold opacity-80">1 Course</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 6: STORE & TOYS SECTION (ALL 8 TOYS) -->
+    <section class="py-16 bg-gradient-to-b from-slate-50 to-orange-50/30 border-y border-amber-100 px-4 sm:px-8">
+      <div class="max-w-7xl mx-auto">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+          <div>
+            <span class="text-orange-500 font-fredoka font-bold text-sm tracking-widest uppercase">KIDS COLLECTION</span>
+            <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800">Educational Toy Store</h2>
+          </div>
+          <button onclick="window.navigateTo('courses.html', 'Courses')" class="bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold px-6 py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 cursor-pointer">
+            KNOW MORE DETAILS
+          </button>
+        </div>
+
+        <div id="home-toys-grid" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <!-- SECTION 7: GALLERY SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="text-center space-y-2 mb-12">
+        <span class="text-orange-500 font-fredoka font-bold text-sm tracking-widest uppercase">KIDS EDUCATION</span>
+        <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800">Activity & School Life Gallery</h2>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-1.webp" alt="Art & Craft Session" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Art & Craft Session</span>
+          </div>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-2.webp" alt="Interactive Learning" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Interactive Learning</span>
+          </div>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-3.webp" alt="Playground Outdoor Games" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Playground Outdoor Games</span>
+          </div>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-4.webp" alt="Classroom Story Time" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Classroom Story Time</span>
+          </div>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-5.webp" alt="Finger Painting Workshop" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Finger Painting Workshop</span>
+          </div>
+        </div>
+        <div class="relative rounded-3xl overflow-hidden group h-60 shadow-md bg-slate-100 cursor-pointer">
+          <img src="assets/images/gallery-6.webp" alt="Music & Instrument Ensemble" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+          <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity flex items-end p-6">
+            <span class="font-fredoka text-white font-bold text-lg">Music & Instrument Ensemble</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 8: SPECIAL BADGE MARQUEE BAR -->
+    <section class="bg-sky-500 text-white py-5 font-fredoka font-bold text-lg tracking-wide uppercase overflow-hidden shadow-md">
+      <div class="flex justify-around items-center gap-8 whitespace-nowrap animate-pulse">
+        <span>🧸 Stackly Toys</span>
+        <span>✦</span>
+        <span>🎨 Salem Art Studio</span>
+        <span>✦</span>
+        <span>🧩 Puzzle Games</span>
+        <span>✦</span>
+        <span>📚 Bedtime Books</span>
+        <span>✦</span>
+        <span>🔬 STEM Robotics Kits</span>
+      </div>
+    </section>
+
+    <!-- SECTION 9: OUR EVENTS SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4 mb-12">
+        <div>
+          <span class="text-orange-500 font-fredoka font-bold text-sm tracking-widest uppercase">OUR EVENTS</span>
+          <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800">Kid-Friendly School Events</h2>
+        </div>
+        <button onclick="window.navigateTo('events.html', 'Events')" class="bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold px-6 py-3 rounded-full text-sm shadow-md transition-all hover:scale-105 cursor-pointer">
+          VIEW ALL EVENTS
+        </button>
+      </div>
+
+      <div id="home-events-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6"></div>
+    </section>
+
+    <!-- SECTION 10: STACKLY SALEM MOBILE APP SECTION -->
+    <section class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="bg-gradient-to-r from-purple-700 via-indigo-800 to-purple-900 rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center relative z-10">
+          <div class="space-y-6">
+            <span class="bg-white/20 text-white font-fredoka text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider inline-block">
+              STACKLY SALEM MOBILE APP
+            </span>
+            <h2 class="font-fredoka text-3xl sm:text-4xl font-bold leading-tight">
+              Preparing Students For Success In A Changing Digital World.
+            </h2>
+            <p class="text-purple-100 text-sm leading-relaxed font-quicksand">
+              Parents can track daily attendance, view teacher notes, receive event photos, and access home learning games on iOS & Android.
+            </p>
+
+            <div class="flex flex-wrap gap-4 pt-2">
+              <button onclick="window.showToast('Redirecting to Stackly Apple App Store...')" class="bg-white text-slate-900 font-fredoka font-bold px-6 py-3 rounded-2xl flex items-center gap-2 shadow-lg hover:bg-slate-100 transition-colors cursor-pointer">
+                <i data-lucide="smartphone" class="w-5 h-5 text-purple-700"></i>
+                <span>Download App Store</span>
+              </button>
+              <button onclick="window.showToast('Redirecting to Stackly Google Play Store...')" class="bg-amber-400 text-slate-900 font-fredoka font-bold px-6 py-3 rounded-2xl flex items-center gap-2 shadow-lg hover:bg-amber-300 transition-colors cursor-pointer">
+                <i data-lucide="smartphone" class="w-5 h-5 text-slate-900"></i>
+                <span>Google Play Store</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="flex justify-center">
+            <img src="assets/images/about-vision.webp" alt="Mobile App Learning" class="rounded-3xl shadow-2xl border-4 border-white/20 max-w-xs sm:max-w-sm rotate-2" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 11: REVIEWS - PARENT TESTIMONIALS -->
+    <section class="py-16 px-4 sm:px-8 max-w-7xl mx-auto">
+      <div class="text-center space-y-2 mb-12">
+        <span class="text-orange-500 font-fredoka font-bold text-sm tracking-widest uppercase">REVIEWS</span>
+        <h2 class="font-fredoka text-3xl sm:text-4xl font-bold text-slate-800">Stackly Parents Testimonials</h2>
+      </div>
+
+      <div id="home-testimonials-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"></div>
+    </section>
+
+    <!-- SECTION 12: INSTAGRAM STRIP -->
+    <section class="py-12 bg-white border-t border-slate-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-8 text-center space-y-6">
+        <h3 class="font-fredoka text-xl font-bold text-slate-800">
+          Follow Instagram <span class="text-orange-500">@stacklykids</span>
+        </h3>
+        <div id="home-instagram-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER WITH TOP CLOUD WAVE -->
+  <footer class="relative bg-[#111923] text-slate-300 pt-0 overflow-hidden">
+    <div class="w-full overflow-hidden leading-none relative z-10">
+      <svg class="relative block w-full h-12 text-[#111923] fill-current" viewBox="0 0 1200 120" preserveAspectRatio="none">
+        <path d="M0,0 C150,90 350,-40 500,60 C650,160 900,10 1200,40 L1200,120 L0,120 Z"></path>
+      </svg>
+    </div>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-8 pt-6 pb-12 relative z-20">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+        <div class="space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
+          <a href="index.html" class="footer-logo-container inline-block"></a>
+          <p class="text-slate-400 text-sm leading-relaxed font-quicksand">
+            Stackly Learning Academy & Tech Solutions (Salem, Tamil Nadu) — Inspiring young minds through active play, certified Montessori STEM learning, and music ensembles.
+          </p>
+
+          <!-- FOOTER SOCIAL MEDIA ICONS GROUP -->
+          <div class="footer-social-container pt-2 flex justify-center md:justify-start"><div class="flex items-center gap-2 shrink-0">
+  <a href="404.html" title="Visit Stackly Kids on Facebook" class="w-9.5 h-9.5 rounded-full bg-[#1877F2] text-white flex items-center justify-center shadow-md hover:scale-125 transition-all cursor-pointer border border-white/30">
+    <svg class="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on X (Twitter)" class="w-9.5 h-9.5 rounded-full bg-slate-900 text-white flex items-center justify-center shadow-md hover:scale-125 transition-all cursor-pointer border border-slate-700">
+    <svg class="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on Instagram" class="w-9.5 h-9.5 rounded-full bg-gradient-to-tr from-amber-400 via-rose-500 to-purple-600 text-white flex items-center justify-center shadow-md hover:scale-125 transition-all cursor-pointer border border-white/30">
+    <svg class="w-4.5 h-4.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="404.html" title="Visit Stackly Kids on LinkedIn" class="w-9.5 h-9.5 rounded-full bg-[#0A66C2] text-white flex items-center justify-center shadow-md hover:scale-125 transition-all cursor-pointer border border-white/30">
+    <svg class="w-4.5 h-4.5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+  </a>
+</div></div>
+        </div>
+
+        <div class="space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
+          <h3 class="font-fredoka text-lg font-bold text-white relative inline-block pb-2">
+            Salem HQ Details
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 w-8 h-1 bg-orange-500 rounded-full"></span>
+          </h3>
+          <ul class="space-y-3 text-sm text-slate-400 font-quicksand flex flex-col items-center md:items-start">
+            <li class="flex items-start justify-center md:justify-start gap-3">
+              <i data-lucide="map-pin" class="w-4 h-4 text-orange-400 shrink-0 mt-1"></i>
+              <span>No. 12/A, Meyyanur Main Rd, Fairlands, Salem, Tamil Nadu 636004</span>
+            </li>
+            <li class="flex items-center justify-center md:justify-start gap-3">
+              <i data-lucide="phone" class="w-4 h-4 text-orange-400 shrink-0"></i>
+              <span>+91 (0427) 234-5678 / +91 98765 43210</span>
+            </li>
+            <li class="flex items-center justify-center md:justify-start gap-3">
+              <i data-lucide="mail" class="w-4 h-4 text-orange-400 shrink-0"></i>
+              <span>admissions.salem@stackly.com</span>
+            </li>
+            <li class="flex items-center justify-center md:justify-start gap-3">
+              <i data-lucide="clock" class="w-4 h-4 text-orange-400 shrink-0"></i>
+              <span>Mon - Sat: 8.00am - 7.00pm</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="space-y-4 text-center md:text-left flex flex-col items-center md:items-start">
+          <h3 class="font-fredoka text-lg font-bold text-white relative inline-block pb-2">
+            Useful Links
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 w-8 h-1 bg-amber-400 rounded-full"></span>
+          </h3>
+          <ul class="space-y-2 text-sm text-slate-400 font-medium font-quicksand flex flex-col items-center md:items-start">
+            <li><a href="about.html" class="hover:text-orange-400 transition-colors">● About Stackly Salem</a></li>
+            <li><a href="courses.html" class="hover:text-orange-400 transition-colors">● Online Classes &amp; LMS</a></li>
+            <li><a href="teachers.html" class="hover:text-orange-400 transition-colors">● Faculty Mentors</a></li>
+            <li><a href="events.html" class="hover:text-orange-400 transition-colors">● School Events</a></li>
+            <li><a href="contact.html" class="hover:text-orange-400 transition-colors">● Contact &amp; Locations</a></li>
+          </ul>
+        </div>
+
+        <div class="space-y-4 relative text-center md:text-left flex flex-col items-center md:items-start w-full">
+          <h3 class="font-fredoka text-lg font-bold text-white relative inline-block pb-2">
+            Newsletter
+            <span class="absolute bottom-0 left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 w-8 h-1 bg-rose-500 rounded-full"></span>
+          </h3>
+          <p class="text-slate-400 text-sm font-quicksand">
+            Subscribe to Stackly Salem weekly activity digests &amp; announcements!
+          </p>
+          <form onsubmit="event.preventDefault(); window.showToast('Subscribed to Salem Parent Newsletter!');" class="space-y-2.5 w-full max-w-sm">
+            <input type="email" placeholder="Enter Email Address..." required class="w-full bg-slate-800/80 text-white placeholder-slate-500 text-sm px-4 py-3 rounded-full border border-slate-700 focus:outline-none focus:border-orange-500 text-center md:text-left" />
+            <button type="submit" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-fredoka font-bold text-sm py-3 px-6 rounded-full transition-colors flex items-center justify-center gap-2 shadow-md cursor-pointer">
+              <span>SUBSCRIBE SALEM UPDATES</span>
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <div class="mt-12 pt-6 border-t border-slate-800/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-quicksand">
+        <p>© 2026 <span class="text-orange-400 font-semibold">Stackly Learning Academy (Salem Company)</span>. All Rights Reserved.</p>
+        <div class="flex flex-wrap items-center gap-2 text-[10px] font-bold text-slate-400">
+          <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">UPI / G PAY</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">VISA</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700">MASTERCARD</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700 text-sky-400">NETBANKING</span>
+          <span class="px-2.5 py-1 bg-slate-800 rounded border border-slate-700 text-emerald-400">PAYTM</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- MASCOT WIDGET -->
+  <div id="mascot-widget" class="fixed bottom-6 left-6 z-40 flex items-end gap-3 group cursor-pointer">
+    <div id="mascot-dialogue" class="hidden bg-white text-slate-800 font-fredoka font-bold text-xs p-3 rounded-2xl shadow-2xl border-2 border-amber-300 max-w-xs animate-bounce">
+      Hoot hoot! 👋 Welcome to Stackly Salem! Need help enrolling?
+    </div>
+    <div class="w-14 h-14 rounded-full bg-gradient-to-tr from-amber-400 to-orange-500 p-1 shadow-2xl group-hover:scale-110 transition-transform flex items-center justify-center">
+      <img src="assets/images/mascot.webp" class="w-full h-full object-cover rounded-full border-2 border-white" />
+    </div>
+  </div>
+
+  <!-- MODALS CONTAINER -->
+  <div id="cart-drawer-modal" class="fixed inset-0 z-50 flex justify-end hidden">
+    <div onclick="window.closeCartDrawer()" class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"></div>
+    <div class="relative w-full max-w-md bg-white h-full shadow-2xl flex flex-col z-10">
+      <div class="p-6 border-b border-slate-100 flex items-center justify-between bg-amber-50/60">
+        <h3 class="font-fredoka text-xl font-bold text-slate-800">Shopping Cart 🛒</h3>
+        <button onclick="window.closeCartDrawer()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+      <div id="cart-drawer-items" class="flex-1 overflow-y-auto p-6 space-y-4"></div>
+      <div class="p-6 border-t border-slate-100 bg-slate-50 space-y-4">
+        <div class="flex items-center justify-between font-fredoka text-lg font-bold">
+          <span>SUBTOTAL:</span>
+          <span id="cart-drawer-total" class="text-orange-600">$0.00</span>
+        </div>
+        <button onclick="window.closeCartDrawer(); window.navigateTo('404.html', 'Checkout');" class="w-full bg-gradient-to-r from-orange-500 to-amber-500 text-white font-fredoka font-bold py-3.5 rounded-full shadow-lg cursor-pointer">PROCEED TO CHECKOUT</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="search-modal" class="fixed inset-0 z-50 flex items-start justify-center pt-20 px-4 hidden">
+    <div onclick="window.closeSearchModal()" class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"></div>
+    <div class="relative max-w-lg w-full bg-white rounded-3xl shadow-2xl p-6 border-4 border-amber-200 z-10 space-y-4">
+      <div class="flex items-center justify-between border-b border-slate-100 pb-3">
+        <h4 class="font-fredoka font-bold text-lg text-slate-800">Search Stackly Salem 🔍</h4>
+        <button onclick="window.closeSearchModal()" class="text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+      </div>
+      <input id="search-input" oninput="window.performSearch(this.value)" type="text" placeholder="Search math, art, teachers, events..." class="w-full bg-slate-50 border border-slate-200 rounded-2xl px-4 py-3 text-sm font-quicksand focus:outline-none focus:ring-2 focus:ring-orange-500" />
+      <div id="search-results-container" class="max-h-80 overflow-y-auto space-y-2"></div>
+    </div>
+  </div>
+
+  <div id="login-modal" class="fixed inset-0 z-50 flex items-center justify-center p-4 hidden">
+    <div onclick="window.closeLoginModal()" class="absolute inset-0 bg-slate-900/60 backdrop-blur-xs"></div>
+    <div class="relative max-w-md w-full bg-white rounded-3xl shadow-2xl p-8 border-4 border-orange-200 z-10 space-y-6">
+      <button onclick="window.closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 text-2xl font-bold cursor-pointer">&times;</button>
+      <div class="text-center space-y-1">
+        <h3 class="font-fredoka text-2xl font-bold text-slate-800">Portal Sign In</h3>
+        <p class="text-xs text-slate-500">Access Student, Parent, Teacher, or Admin Portal</p>
+      </div>
+      <div class="space-y-3">
+        <p class="font-fredoka font-bold text-xs text-slate-500 uppercase tracking-wider text-center">Quick Demo Login As:</p>
+        <div class="grid grid-cols-2 gap-3">
+          <button onclick="window.quickLogin('student')" class="p-3 bg-amber-50 hover:bg-amber-100 rounded-2xl font-fredoka font-bold text-xs text-amber-800 border border-amber-200 cursor-pointer">👶 Student</button>
+          <button onclick="window.quickLogin('parent')" class="p-3 bg-orange-50 hover:bg-orange-100 rounded-2xl font-fredoka font-bold text-xs text-orange-800 border border-orange-200 cursor-pointer">👨‍👩‍👧 Parent</button>
+          <button onclick="window.quickLogin('teacher')" class="p-3 bg-sky-50 hover:bg-sky-100 rounded-2xl font-fredoka font-bold text-xs text-sky-800 border border-sky-200 cursor-pointer">👩‍🏫 Teacher</button>
+          <button onclick="window.quickLogin('admin')" class="p-3 bg-rose-50 hover:bg-rose-100 rounded-2xl font-fredoka font-bold text-xs text-rose-800 border border-rose-200 cursor-pointer">⚙️ Admin</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCRIPTS -->
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/main.js"></script>
+  <script src="assets/js/modals.js"></script>
+  <script src="assets/js/interactive-pad.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Render All 8 Toys
+      const toysGrid = document.getElementById('home-toys-grid');
+      if (toysGrid && window.TOYS_DATA) {
+        toysGrid.innerHTML = window.TOYS_DATA.map(toy => `
+          <div class="bg-white rounded-3xl p-4 border border-amber-100 shadow-xs hover:shadow-2xl transition-all group flex flex-col justify-between hover:-translate-y-2">
+            <div>
+              <div class="relative rounded-2xl overflow-hidden mb-3 h-48 bg-slate-100">
+                <img src="${toy.image}" alt="${toy.name}" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+                ${toy.isNew ? `<span class="absolute top-2 left-2 bg-rose-500 text-white font-fredoka font-bold text-[10px] px-2.5 py-1 rounded-full uppercase shadow-md">NEW</span>` : ''}
+              </div>
+              <div class="flex items-center gap-1 text-amber-400 text-xs mb-1">
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-400"></i>
+                <span class="text-slate-400 text-[11px] ml-1">(${toy.reviewsCount})</span>
+              </div>
+              <h3 class="font-fredoka font-bold text-slate-800 text-base mb-1 group-hover:text-orange-500 transition-colors">${toy.name}</h3>
+              <span class="text-xs text-slate-400 block mb-3 font-medium">${toy.category}</span>
+            </div>
+            <div class="flex items-center justify-between pt-3 border-t border-slate-100">
+              <div class="flex items-baseline gap-2">
+                <span class="font-fredoka text-lg font-bold text-slate-900">₹${(toy.price * 80).toFixed(0)}</span>
+                ${toy.originalPrice ? `<span class="text-xs text-slate-400 line-through">₹${(toy.originalPrice * 80).toFixed(0)}</span>` : ''}
+              </div>
+              <button onclick="window.addToCart('${toy.id}')" class="w-9 h-9 rounded-full bg-orange-100 text-orange-600 hover:bg-orange-500 hover:text-white flex items-center justify-center transition-colors cursor-pointer" title="Add to Cart">
+                <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+              </button>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Render 3 Events
+      const eventsGrid = document.getElementById('home-events-grid');
+      if (eventsGrid && window.EVENTS_DATA) {
+        eventsGrid.innerHTML = window.EVENTS_DATA.slice(0, 3).map(event => `
+          <div onclick="window.openEventModal('${event.id}')" class="bg-white rounded-3xl overflow-hidden border border-slate-100 shadow-sm hover:shadow-2xl transition-all cursor-pointer group flex flex-col justify-between hover:-translate-y-2">
+            <div>
+              <div class="relative h-48 overflow-hidden bg-slate-100">
+                <img src="${event.image}" alt="${event.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                <div class="absolute top-4 left-4 bg-orange-500 text-white px-3 py-1 rounded-2xl font-fredoka font-bold text-xs text-center shadow-md">
+                  <span class="text-lg leading-tight block">${event.dateDay}</span>
+                  <span class="text-[10px] uppercase block">${event.dateMonth}</span>
+                </div>
+              </div>
+              <div class="p-6 space-y-3">
+                <span class="text-xs bg-orange-50 text-orange-600 px-3 py-1 rounded-full font-bold font-fredoka">${event.category}</span>
+                <h3 class="font-fredoka font-bold text-xl text-slate-800 group-hover:text-orange-500 transition-colors">${event.title}</h3>
+                <p class="text-slate-500 text-xs line-clamp-2 leading-relaxed">${event.description}</p>
+              </div>
+            </div>
+            <div class="px-6 pb-6 pt-2 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
+              <span class="flex items-center gap-1"><i data-lucide="clock" class="w-3.5 h-3.5 text-orange-400"></i> ${event.time}</span>
+              <span class="flex items-center gap-1"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-orange-400"></i> ${event.location}</span>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Render 4 Parent Testimonials
+      const testimonialsGrid = document.getElementById('home-testimonials-grid');
+      if (testimonialsGrid && window.TESTIMONIALS_DATA) {
+        testimonialsGrid.innerHTML = window.TESTIMONIALS_DATA.map(t => `
+          <div class="${t.bgColor} text-white p-6 rounded-3xl shadow-lg flex flex-col justify-between space-y-4 transition-all hover:-translate-y-2">
+            <div class="space-y-3">
+              <div class="flex items-center gap-1 text-amber-200">
+                <i data-lucide="star" class="w-4 h-4 fill-amber-300"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-300"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-300"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-300"></i>
+                <i data-lucide="star" class="w-4 h-4 fill-amber-300"></i>
+              </div>
+              <p class="text-sm leading-relaxed font-medium">"${t.quote}"</p>
+            </div>
+            <div class="flex items-center gap-3 pt-4 border-t border-white/20">
+              <img src="${t.avatar}" alt="${t.name}" class="w-11 h-11 rounded-full object-cover border-2 border-white" />
+              <div>
+                <h4 class="font-fredoka font-bold text-base leading-tight">${t.name}</h4>
+                <span class="text-xs opacity-90 block">${t.parentRole}</span>
+              </div>
+            </div>
+          </div>
+        `).join('');
+      }
+
+      // Render Instagram Strip
+      const instaGrid = document.getElementById('home-instagram-grid');
+      if (instaGrid && window.INSTAGRAM_POSTS) {
+        instaGrid.innerHTML = window.INSTAGRAM_POSTS.map(url => `
+          <div class="relative rounded-2xl overflow-hidden group h-36 shadow-xs bg-slate-100 cursor-pointer">
+            <img src="${url}" alt="Instagram post" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300" />
+          </div>
+        `).join('');
+      }
+
+      if (window.lucide) lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
