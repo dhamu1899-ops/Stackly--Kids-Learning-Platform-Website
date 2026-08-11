@@ -331,6 +331,31 @@ window.navigateTo = function(targetUrl, targetPageName) {
   }, 40);
 };
 
+// Smart Back Navigation (with sound FX & fallback for direct entries or 404 loops)
+window.goBack = function() {
+  if (window.sounds) window.sounds.playPop();
+
+  const ref = document.referrer;
+  let isSameSite = false;
+
+  if (ref) {
+    try {
+      const refUrl = new URL(ref);
+      isSameSite = (refUrl.origin === window.location.origin) || (window.location.protocol === 'file:');
+    } catch (e) {
+      isSameSite = ref.includes(window.location.hostname) || (window.location.protocol === 'file:' && ref.startsWith('file:'));
+    }
+  }
+
+  // If there's valid internal history and we didn't reload 404, go back in history
+  if (isSameSite && window.history.length > 1 && !ref.endsWith('404.html')) {
+    window.history.back();
+  } else {
+    // Otherwise fallback to navigating to home page
+    window.navigateTo('index.html', 'Home');
+  }
+};
+
 document.addEventListener('DOMContentLoaded', function() {
 
   // Populate Header Logo Containers
