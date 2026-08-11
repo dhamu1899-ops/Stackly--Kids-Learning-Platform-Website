@@ -248,6 +248,15 @@ const FUN_MESSAGES = [
 ];
 
 window.navigateTo = function(targetUrl, targetPageName) {
+  // If navigating to 404 from a valid non-404 page, store originating page in sessionStorage
+  if (targetUrl && targetUrl.includes('404')) {
+    if (!window.location.pathname.endsWith('404.html') && !window.location.pathname.endsWith('404')) {
+      try {
+        sessionStorage.setItem('stackly_from_page', window.location.href);
+      } catch (e) {}
+    }
+  }
+
   window.sounds.playChime();
 
   let overlay = document.getElementById('kids-loading-overlay');
@@ -331,32 +340,83 @@ window.navigateTo = function(targetUrl, targetPageName) {
   }, 40);
 };
 
+// Helper to parse URL string into clean target filename & human-readable page title
+function parsePageInfo(urlStr) {
+  if (!urlStr) return null;
+  try {
+    const u = new URL(urlStr, window.location.href);
+    let path = u.pathname || '';
+    let file = path.substring(path.lastIndexOf('/') + 1) || 'index.html';
+
+    // Ignore 404 pages
+    if (file === '404.html' || file === '404' || file === '') return null;
+
+    let pageName = 'Home';
+    if (file.includes('about')) pageName = 'About Us';
+    else if (file.includes('courses')) pageName = 'Courses';
+    else if (file.includes('events')) pageName = 'Events';
+    else if (file.includes('teachers')) pageName = 'Faculty';
+    else if (file.includes('contact')) pageName = 'Contact';
+    else if (file.includes('blog')) pageName = 'Blog';
+    else if (file.includes('login')) pageName = 'Login';
+    else if (file.includes('signup')) pageName = 'Signup';
+    else if (file.includes('dashboard')) pageName = 'Dashboard';
+
+    return { file: file, name: pageName };
+  } catch (e) {
+    return null;
+  }
+}
+
 // Smart Back Navigation (with sound FX & fallback for direct entries or 404 loops)
 window.goBack = function() {
-  if (window.sounds) window.sounds.playPop();
-
-  const ref = document.referrer;
-  let isSameSite = false;
-
-  if (ref) {
-    try {
-      const refUrl = new URL(ref);
-      isSameSite = (refUrl.origin === window.location.origin) || (window.location.protocol === 'file:');
-    } catch (e) {
-      isSameSite = ref.includes(window.location.hostname) || (window.location.protocol === 'file:' && ref.startsWith('file:'));
-    }
+  if (window.sounds && typeof window.sounds.playPop === 'function') {
+    window.sounds.playPop();
   }
 
-  // If there's valid internal history and we didn't reload 404, go back in history
-  if (isSameSite && window.history.length > 1 && !ref.endsWith('404.html')) {
-    window.history.back();
+  let target = null;
+
+  // 1. Try document.referrer
+  if (document.referrer) {
+    target = parsePageInfo(document.referrer);
+  }
+
+  // 2. Try sessionStorage 'stackly_from_page' (saved right before navigating to 404)
+  if (!target) {
+    try {
+      const fromPage = sessionStorage.getItem('stackly_from_page');
+      target = parsePageInfo(fromPage);
+    } catch (e) {}
+  }
+
+  // 3. Try sessionStorage 'stackly_last_page' (saved on DOMContentLoaded of non-404 pages)
+  if (!target) {
+    try {
+      const lastPage = sessionStorage.getItem('stackly_last_page');
+      target = parsePageInfo(lastPage);
+    } catch (e) {}
+  }
+
+  // 4. Default fallback to index.html
+  if (!target) {
+    target = { file: 'index.html', name: 'Home' };
+  }
+
+  if (typeof window.navigateTo === 'function') {
+    window.navigateTo(target.file, target.name);
   } else {
-    // Otherwise fallback to navigating to home page
-    window.navigateTo('index.html', 'Home');
+    window.location.href = target.file;
   }
 };
 
 document.addEventListener('DOMContentLoaded', function() {
+
+  // Save current page URL to sessionStorage if not a 404 page
+  if (!window.location.pathname.endsWith('404.html') && !window.location.pathname.endsWith('404')) {
+    try {
+      sessionStorage.setItem('stackly_last_page', window.location.href);
+    } catch (e) {}
+  }
 
   // Populate Header Logo Containers
   const headerLogos = document.querySelectorAll('.header-logo-container');
